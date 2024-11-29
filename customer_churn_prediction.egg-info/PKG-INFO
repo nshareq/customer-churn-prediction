@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: customer-churn-prediction
+Version: 0.1.0
+Summary: A machine learning pipeline for customer churn prediction.
+Home-page: https://github.com/nshareq/customer-churn-prediction
+Author: Naim Shareq
+Author-email: naimshareq@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.21.0
+Requires-Dist: pandas>=1.3.0
+Requires-Dist: scikit-learn>=0.24.0
+Requires-Dist: mlflow>=2.0.0
+Requires-Dist: pydantic>=1.10.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: pre-commit>=3.0.0; extra == "dev"
+
+# MLOps Pipeline Project
+
+## Overview
+
+This MLOps pipeline for customer churn prediction aims to provide an automated, scalable, and robust system for predicting customer churn and implementing strategies to mitigate it. By leveraging machine learning, businesses can prioritize customer retention efforts and optimize marketing strategies.
+
+## Key Stakeholders
+
+**Business Leaders**
+
+**Marketing Team**
+
+**Customer Success Managers**
+
+**Data Science Team**
+
+## Dataset
+
+The project uses the Telco Customer Churn dataset, which contains customer details and their churn status. This dataset is used to build a predictive model to identify customers likely to churn.
+
+```mermaid
+classDiagram
+    class Features {
+        Demographic_Features
+        Service_Features
+        Account_Features
+        Target_Features
+    }
+    
+    class Demographic_Features {
+        gender: categorical
+        age: numeric
+        tenure: numeric
+    }
+    
+    class Service_Features {
+        phone-service: categorical
+        internet-service: categorical
+        streaming-services: categorical
+    }
+    
+    class Account_Features {
+        contract-type: categorical
+        payment-method: categorical
+        monthly-charges: numeric
+        total-charges: numeric
+    }
+    
+    class Target_Features {
+        churn-status: binary
+    }
+    
+    Features --> Demographic_Features
+    Features --> Service_Features
+    Features --> Account_Features
+    Features --> Target_Features
+```

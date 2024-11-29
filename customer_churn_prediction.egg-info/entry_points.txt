@@ -1,0 +1,2 @@
+[console_scripts]
+customer-churn = customer_churn.cli:main
