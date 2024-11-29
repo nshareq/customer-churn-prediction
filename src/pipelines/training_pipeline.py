@@ -14,13 +14,11 @@ class TrainingPipeline:
         try:
             logging.info("\n\n====================Training Pipeline Started====================\n")
             
-            # Data Ingestion
             logging.info("Starting Data Ingestion")
             data_ingestion = DataIngestion()
             data_path = data_ingestion.initiate_data_ingestion()
             logging.info(f"Data Ingestion completed. Data saved at: {data_path}")
 
-            # Data Transformation
             logging.info("\nStarting Data Transformation")
             data_transformation = DataTransformation()
             features_arr, target_arr, preprocessor_path = data_transformation.initiate_data_transformation(data_path)
@@ -29,7 +27,6 @@ class TrainingPipeline:
             logging.info(f"Target shape: {target_arr.shape}")
             logging.info(f"Preprocessor saved at: {preprocessor_path}")
 
-            # Model Training
             logging.info("\nStarting Model Training")
             model_trainer = ModelTrainer()
             model, score = model_trainer.initiate_model_training(features_arr, target_arr)
