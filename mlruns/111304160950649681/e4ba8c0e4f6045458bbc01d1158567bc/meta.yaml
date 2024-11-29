@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/111304160950649681/e4ba8c0e4f6045458bbc01d1158567bc/artifacts
+end_time: 1732872331293
+entry_point_name: ''
+experiment_id: '111304160950649681'
+lifecycle_stage: active
+run_id: e4ba8c0e4f6045458bbc01d1158567bc
+run_name: random_forest
+run_uuid: e4ba8c0e4f6045458bbc01d1158567bc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732872249974
+status: 3
+tags: []
+user_id: naim

@@ -1,0 +1,54 @@
+[ 2024-11-29 10:14:32,555 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:14:32,555 ] 16 root - INFO - Data Ingestion config initialized with path: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:14:32,555 ] 19 root - INFO - Started data ingestion process
+[ 2024-11-29 10:14:32,555 ] 22 root - INFO - Attempting to read dataset from data-source directory
+[ 2024-11-29 10:14:32,570 ] 24 root - INFO - Dataset read successfully with shape: (7043, 21)
+[ 2024-11-29 10:14:32,570 ] 25 root - INFO - Dataset columns: ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:14:32,570 ] 28 root - INFO - Creating directory at: artifacts/data-ingestion
+[ 2024-11-29 10:14:32,570 ] 30 root - INFO - Directory created successfully
+[ 2024-11-29 10:14:32,570 ] 33 root - INFO - Starting data cleaning process
+[ 2024-11-29 10:14:32,573 ] 34 root - INFO - Missing values before cleaning: 0
+[ 2024-11-29 10:14:32,573 ] 37 root - INFO - Converting TotalCharges column to numeric
+[ 2024-11-29 10:14:32,576 ] 40 root - INFO - Missing values in TotalCharges after conversion: 11
+[ 2024-11-29 10:14:32,576 ] 43 root - INFO - Removing customerID column
+[ 2024-11-29 10:14:32,577 ] 45 root - INFO - Remaining columns after dropping customerID: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:14:32,577 ] 48 root - INFO - Dataset statistics after cleaning:
+[ 2024-11-29 10:14:32,577 ] 49 root - INFO - Number of rows: 7043
+[ 2024-11-29 10:14:32,577 ] 50 root - INFO - Number of columns: 20
+[ 2024-11-29 10:14:32,580 ] 51 root - INFO - Missing values after cleaning: 11
+[ 2024-11-29 10:14:32,580 ] 52 root - INFO - Number of customers churned: 1869
+[ 2024-11-29 10:14:32,581 ] 53 root - INFO - Churn rate: 26.54%
+[ 2024-11-29 10:14:32,581 ] 56 root - INFO - Saving processed data to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:14:32,604 ] 58 root - INFO - Data saved successfully
+[ 2024-11-29 10:14:32,605 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:14:32,605 ] 21 root - INFO - Data Transformation config initialized with preprocessor path: artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:14:32,605 ] 72 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:14:32,616 ] 74 root - INFO - Dataset shape: (7043, 20)
+[ 2024-11-29 10:14:32,616 ] 75 root - INFO - Dataset columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:14:32,616 ] 77 root - INFO - Getting preprocessor object
+[ 2024-11-29 10:14:32,616 ] 25 root - INFO - Initializing data transformation pipelines
+[ 2024-11-29 10:14:32,616 ] 36 root - INFO - Numerical columns: ['tenure', 'MonthlyCharges', 'TotalCharges']
+[ 2024-11-29 10:14:32,616 ] 37 root - INFO - Categorical columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+[ 2024-11-29 10:14:32,616 ] 39 root - INFO - Creating numerical pipeline with imputer and scaler
+[ 2024-11-29 10:14:32,616 ] 47 root - INFO - Creating categorical pipeline with imputer and one-hot encoder
+[ 2024-11-29 10:14:32,616 ] 55 root - INFO - Creating column transformer with numerical and categorical pipelines
+[ 2024-11-29 10:14:32,617 ] 63 root - INFO - Preprocessor object created successfully
+[ 2024-11-29 10:14:32,617 ] 80 root - INFO - Creating target variable
+[ 2024-11-29 10:14:32,620 ] 83 root - INFO - Target variable distribution:
+Churn
+0    5174
+1    1869
+Name: count, dtype: int64
+[ 2024-11-29 10:14:32,620 ] 88 root - INFO - Columns to drop: ['Churn']
+[ 2024-11-29 10:14:32,621 ] 91 root - INFO - Input features shape after dropping columns: (7043, 19)
+[ 2024-11-29 10:14:32,621 ] 93 root - INFO - Creating directory: artifacts/data-transformation
+[ 2024-11-29 10:14:32,621 ] 96 root - INFO - Applying preprocessing object on input features
+[ 2024-11-29 10:14:32,653 ] 98 root - INFO - Transformed feature array shape: (7043, 30)
+[ 2024-11-29 10:14:32,653 ] 100 root - INFO - Saving preprocessing object
+[ 2024-11-29 10:14:32,653 ] 103 root - INFO - Saved preprocessing object at artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:14:32,653 ] 21 root - INFO - Starting Model Training
+[ 2024-11-29 10:14:32,654 ] 24 root - INFO - Model trainer config initialized with path: artifacts/model-trainer/model.pkl
+[ 2024-11-29 10:14:32,662 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=4, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0c6c0ef050>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:14:37,572 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=3, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0c6c0eddc0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:14:45,701 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=2, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0c6c0ee060>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:15:02,341 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=1, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0c6c0ecf80>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction

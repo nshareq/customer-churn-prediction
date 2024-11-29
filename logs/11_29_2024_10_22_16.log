@@ -1,0 +1,54 @@
+[ 2024-11-29 10:22:17,591 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:22:17,591 ] 16 root - INFO - Data Ingestion config initialized with path: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:17,591 ] 19 root - INFO - Started data ingestion process
+[ 2024-11-29 10:22:17,591 ] 22 root - INFO - Attempting to read dataset from data-source directory
+[ 2024-11-29 10:22:17,627 ] 24 root - INFO - Dataset read successfully with shape: (7043, 21)
+[ 2024-11-29 10:22:17,627 ] 25 root - INFO - Dataset columns: ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:17,628 ] 28 root - INFO - Creating directory at: artifacts/data-ingestion
+[ 2024-11-29 10:22:17,628 ] 30 root - INFO - Directory created successfully
+[ 2024-11-29 10:22:17,628 ] 33 root - INFO - Starting data cleaning process
+[ 2024-11-29 10:22:17,631 ] 34 root - INFO - Missing values before cleaning: 0
+[ 2024-11-29 10:22:17,631 ] 37 root - INFO - Converting TotalCharges column to numeric
+[ 2024-11-29 10:22:17,634 ] 40 root - INFO - Missing values in TotalCharges after conversion: 11
+[ 2024-11-29 10:22:17,634 ] 43 root - INFO - Removing customerID column
+[ 2024-11-29 10:22:17,636 ] 45 root - INFO - Remaining columns after dropping customerID: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:17,636 ] 48 root - INFO - Dataset statistics after cleaning:
+[ 2024-11-29 10:22:17,636 ] 49 root - INFO - Number of rows: 7043
+[ 2024-11-29 10:22:17,636 ] 50 root - INFO - Number of columns: 20
+[ 2024-11-29 10:22:17,641 ] 51 root - INFO - Missing values after cleaning: 11
+[ 2024-11-29 10:22:17,642 ] 52 root - INFO - Number of customers churned: 1869
+[ 2024-11-29 10:22:17,642 ] 53 root - INFO - Churn rate: 26.54%
+[ 2024-11-29 10:22:17,643 ] 56 root - INFO - Saving processed data to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:17,676 ] 58 root - INFO - Data saved successfully
+[ 2024-11-29 10:22:17,676 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:22:17,677 ] 21 root - INFO - Data Transformation config initialized with preprocessor path: artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:22:17,677 ] 72 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:17,695 ] 74 root - INFO - Dataset shape: (7043, 20)
+[ 2024-11-29 10:22:17,695 ] 75 root - INFO - Dataset columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:17,695 ] 77 root - INFO - Getting preprocessor object
+[ 2024-11-29 10:22:17,695 ] 25 root - INFO - Initializing data transformation pipelines
+[ 2024-11-29 10:22:17,695 ] 36 root - INFO - Numerical columns: ['tenure', 'MonthlyCharges', 'TotalCharges']
+[ 2024-11-29 10:22:17,695 ] 37 root - INFO - Categorical columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+[ 2024-11-29 10:22:17,695 ] 39 root - INFO - Creating numerical pipeline with imputer and scaler
+[ 2024-11-29 10:22:17,695 ] 47 root - INFO - Creating categorical pipeline with imputer and one-hot encoder
+[ 2024-11-29 10:22:17,695 ] 55 root - INFO - Creating column transformer with numerical and categorical pipelines
+[ 2024-11-29 10:22:17,695 ] 63 root - INFO - Preprocessor object created successfully
+[ 2024-11-29 10:22:17,695 ] 80 root - INFO - Creating target variable
+[ 2024-11-29 10:22:17,697 ] 83 root - INFO - Target variable distribution:
+Churn
+0    5174
+1    1869
+Name: count, dtype: int64
+[ 2024-11-29 10:22:17,697 ] 88 root - INFO - Columns to drop: ['Churn']
+[ 2024-11-29 10:22:17,698 ] 91 root - INFO - Input features shape after dropping columns: (7043, 19)
+[ 2024-11-29 10:22:17,698 ] 93 root - INFO - Creating directory: artifacts/data-transformation
+[ 2024-11-29 10:22:17,698 ] 96 root - INFO - Applying preprocessing object on input features
+[ 2024-11-29 10:22:17,745 ] 98 root - INFO - Transformed feature array shape: (7043, 30)
+[ 2024-11-29 10:22:17,746 ] 100 root - INFO - Saving preprocessing object
+[ 2024-11-29 10:22:17,747 ] 103 root - INFO - Saved preprocessing object at artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:22:17,747 ] 21 root - INFO - Starting Model Training
+[ 2024-11-29 10:22:17,747 ] 26 root - INFO - MLflow tracking URI set successfully
+[ 2024-11-29 10:22:17,871 ] 28 root - INFO - MLflow experiment initialized
+[ 2024-11-29 10:22:17,872 ] 87 root - INFO - Starting model training process
+[ 2024-11-29 10:22:17,872 ] 144 root - ERROR - Error in model training: 'tuple' object has no attribute 'shape'
+[ 2024-11-29 10:22:17,872 ] 28 root - ERROR - Error in main execution

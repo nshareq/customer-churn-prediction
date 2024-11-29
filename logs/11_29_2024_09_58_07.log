@@ -1,0 +1,5 @@
+[ 2024-11-29 09:58:11,313 ] 18 root - INFO - Started data ingestion
+[ 2024-11-29 09:58:11,346 ] 22 root - INFO - Dataset read successfully with shape: {df.shape}
+[ 2024-11-29 09:58:11,385 ] 36 root - INFO - Data saved to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 09:58:11,397 ] 63 root - INFO - Read data completed
+[ 2024-11-29 09:58:11,400 ] 22 root - ERROR - Error in main execution

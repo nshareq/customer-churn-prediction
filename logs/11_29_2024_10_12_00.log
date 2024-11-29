@@ -1,0 +1,37 @@
+[ 2024-11-29 10:12:01,137 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:12:01,138 ] 16 root - INFO - Data Ingestion config initialized with path: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:12:01,138 ] 19 root - INFO - Started data ingestion process
+[ 2024-11-29 10:12:01,138 ] 22 root - INFO - Attempting to read dataset from data-source directory
+[ 2024-11-29 10:12:01,155 ] 24 root - INFO - Dataset read successfully with shape: (7043, 21)
+[ 2024-11-29 10:12:01,155 ] 25 root - INFO - Dataset columns: ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:12:01,155 ] 28 root - INFO - Creating directory at: artifacts/data-ingestion
+[ 2024-11-29 10:12:01,155 ] 30 root - INFO - Directory created successfully
+[ 2024-11-29 10:12:01,155 ] 33 root - INFO - Starting data cleaning process
+[ 2024-11-29 10:12:01,160 ] 34 root - INFO - Missing values before cleaning: 0
+[ 2024-11-29 10:12:01,160 ] 37 root - INFO - Converting TotalCharges column to numeric
+[ 2024-11-29 10:12:01,166 ] 40 root - INFO - Missing values in TotalCharges after conversion: 11
+[ 2024-11-29 10:12:01,166 ] 43 root - INFO - Removing customerID column
+[ 2024-11-29 10:12:01,168 ] 45 root - INFO - Remaining columns after dropping customerID: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:12:01,168 ] 48 root - INFO - Dataset statistics after cleaning:
+[ 2024-11-29 10:12:01,168 ] 49 root - INFO - Number of rows: 7043
+[ 2024-11-29 10:12:01,169 ] 50 root - INFO - Number of columns: 20
+[ 2024-11-29 10:12:01,172 ] 51 root - INFO - Missing values after cleaning: 11
+[ 2024-11-29 10:12:01,177 ] 52 root - INFO - Number of customers churned: 1869
+[ 2024-11-29 10:12:01,178 ] 53 root - INFO - Churn rate: 26.54%
+[ 2024-11-29 10:12:01,178 ] 56 root - INFO - Saving processed data to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:12:01,205 ] 58 root - INFO - Data saved successfully
+[ 2024-11-29 10:12:01,206 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:12:01,206 ] 22 root - INFO - Data Transformation configuration initialized
+[ 2024-11-29 10:12:01,206 ] 69 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:12:01,219 ] 26 root - INFO - Setting up preprocessing pipelines
+[ 2024-11-29 10:12:01,219 ] 37 root - INFO - Created numerical and categorical column lists
+[ 2024-11-29 10:12:01,219 ] 60 root - INFO - Preprocessing pipelines created successfully
+[ 2024-11-29 10:12:01,219 ] 75 root - INFO - Creating target variable
+[ 2024-11-29 10:12:01,221 ] 79 root - INFO - Input features shape: (7043, 19)
+[ 2024-11-29 10:12:01,221 ] 82 root - INFO - Created directory for preprocessor
+[ 2024-11-29 10:12:01,297 ] 85 root - INFO - Data transformation completed
+[ 2024-11-29 10:12:01,298 ] 89 root - INFO - Saved preprocessor object
+[ 2024-11-29 10:12:01,299 ] 21 root - INFO - Starting Model Training
+[ 2024-11-29 10:12:01,309 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=4, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0ed740d9d0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:12:05,683 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=3, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0ed740cad0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:12:13,793 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=2, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f0ed740cce0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction

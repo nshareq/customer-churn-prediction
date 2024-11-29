@@ -1,0 +1,13 @@
+[ 2024-11-29 10:07:03,368 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:07:03,368 ] 18 root - INFO - Started data ingestion
+[ 2024-11-29 10:07:03,398 ] 22 root - INFO - Dataset read successfully with shape: {df.shape}
+[ 2024-11-29 10:07:03,450 ] 36 root - INFO - Data saved to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:07:03,450 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:07:03,512 ] 63 root - INFO - Read data completed
+[ 2024-11-29 10:07:03,564 ] 21 root - INFO - Starting Model Training
+[ 2024-11-29 10:07:03,577 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=4, connect=4, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8d40590ec0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:07:08,242 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=3, connect=3, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8d3f6ddbb0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:07:16,546 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=2, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8d3f6dcdd0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:07:32,916 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=1, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8d3f6dcce0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:08:05,643 ] 870 urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=0, read=5, redirect=5, status=5)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f8d3f6dfec0>: Failed to establish a new connection: [Errno 111] Connection refused')': /api/2.0/mlflow/experiments/get-by-name?experiment_name=customer_churn_prediction
+[ 2024-11-29 10:08:05,644 ] 28 root - ERROR - Error in main execution

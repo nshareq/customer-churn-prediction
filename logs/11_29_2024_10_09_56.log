@@ -1,0 +1,17 @@
+[ 2024-11-29 10:09:57,021 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:09:57,022 ] 16 root - INFO - Data Ingestion configuration initialized
+[ 2024-11-29 10:09:57,022 ] 20 root - INFO - Starting data ingestion
+[ 2024-11-29 10:09:57,042 ] 24 root - INFO - Dataset read as DataFrame with shape: (7043, 21)
+[ 2024-11-29 10:09:57,042 ] 28 root - INFO - Created directory: artifacts/data-ingestion
+[ 2024-11-29 10:09:57,071 ] 32 root - INFO - Data saved to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:09:57,072 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:09:57,072 ] 22 root - INFO - Data Transformation configuration initialized
+[ 2024-11-29 10:09:57,072 ] 69 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:09:57,087 ] 26 root - INFO - Setting up preprocessing pipelines
+[ 2024-11-29 10:09:57,087 ] 37 root - INFO - Created numerical and categorical column lists
+[ 2024-11-29 10:09:57,087 ] 60 root - INFO - Preprocessing pipelines created successfully
+[ 2024-11-29 10:09:57,087 ] 75 root - INFO - Creating target variable
+[ 2024-11-29 10:09:57,089 ] 79 root - INFO - Input features shape: (7043, 20)
+[ 2024-11-29 10:09:57,089 ] 82 root - INFO - Created directory for preprocessor
+[ 2024-11-29 10:09:57,093 ] 94 root - ERROR - Error in data transformation
+[ 2024-11-29 10:09:57,093 ] 28 root - ERROR - Error in main execution

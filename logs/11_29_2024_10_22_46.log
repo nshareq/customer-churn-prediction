@@ -1,0 +1,55 @@
+[ 2024-11-29 10:22:47,209 ] 13 root - INFO - 
+
+>>>>> Starting the Machine Learning Pipeline <<<<<
+
+[ 2024-11-29 10:22:47,209 ] 16 root - INFO - >>>>> Initiating Data Ingestion Phase <<<<<
+[ 2024-11-29 10:22:47,209 ] 16 root - INFO - Data Ingestion config initialized with path: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:47,209 ] 19 root - INFO - Started data ingestion process
+[ 2024-11-29 10:22:47,209 ] 22 root - INFO - Attempting to read dataset from data-source directory
+[ 2024-11-29 10:22:47,231 ] 24 root - INFO - Dataset read successfully with shape: (7043, 21)
+[ 2024-11-29 10:22:47,231 ] 25 root - INFO - Dataset columns: ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:47,231 ] 28 root - INFO - Creating directory at: artifacts/data-ingestion
+[ 2024-11-29 10:22:47,231 ] 30 root - INFO - Directory created successfully
+[ 2024-11-29 10:22:47,231 ] 33 root - INFO - Starting data cleaning process
+[ 2024-11-29 10:22:47,234 ] 34 root - INFO - Missing values before cleaning: 0
+[ 2024-11-29 10:22:47,234 ] 37 root - INFO - Converting TotalCharges column to numeric
+[ 2024-11-29 10:22:47,236 ] 40 root - INFO - Missing values in TotalCharges after conversion: 11
+[ 2024-11-29 10:22:47,236 ] 43 root - INFO - Removing customerID column
+[ 2024-11-29 10:22:47,238 ] 45 root - INFO - Remaining columns after dropping customerID: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:47,238 ] 48 root - INFO - Dataset statistics after cleaning:
+[ 2024-11-29 10:22:47,238 ] 49 root - INFO - Number of rows: 7043
+[ 2024-11-29 10:22:47,238 ] 50 root - INFO - Number of columns: 20
+[ 2024-11-29 10:22:47,241 ] 51 root - INFO - Missing values after cleaning: 11
+[ 2024-11-29 10:22:47,241 ] 52 root - INFO - Number of customers churned: 1869
+[ 2024-11-29 10:22:47,242 ] 53 root - INFO - Churn rate: 26.54%
+[ 2024-11-29 10:22:47,242 ] 56 root - INFO - Saving processed data to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:47,266 ] 58 root - INFO - Data saved successfully
+[ 2024-11-29 10:22:47,267 ] 19 root - INFO - Data ingestion completed. Data saved at: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:47,267 ] 22 root - INFO - 
+>>>>> Initiating Data Transformation Phase <<<<<
+[ 2024-11-29 10:22:47,267 ] 21 root - INFO - Data Transformation config initialized with preprocessor path: artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:22:47,267 ] 72 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:22:47,279 ] 74 root - INFO - Dataset shape: (7043, 20)
+[ 2024-11-29 10:22:47,279 ] 75 root - INFO - Dataset columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:22:47,279 ] 77 root - INFO - Getting preprocessor object
+[ 2024-11-29 10:22:47,279 ] 25 root - INFO - Initializing data transformation pipelines
+[ 2024-11-29 10:22:47,279 ] 36 root - INFO - Numerical columns: ['tenure', 'MonthlyCharges', 'TotalCharges']
+[ 2024-11-29 10:22:47,279 ] 37 root - INFO - Categorical columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+[ 2024-11-29 10:22:47,279 ] 39 root - INFO - Creating numerical pipeline with imputer and scaler
+[ 2024-11-29 10:22:47,279 ] 47 root - INFO - Creating categorical pipeline with imputer and one-hot encoder
+[ 2024-11-29 10:22:47,280 ] 55 root - INFO - Creating column transformer with numerical and categorical pipelines
+[ 2024-11-29 10:22:47,280 ] 63 root - INFO - Preprocessor object created successfully
+[ 2024-11-29 10:22:47,280 ] 80 root - INFO - Creating target variable
+[ 2024-11-29 10:22:47,281 ] 83 root - INFO - Target variable distribution:
+Churn
+0    5174
+1    1869
+Name: count, dtype: int64
+[ 2024-11-29 10:22:47,281 ] 88 root - INFO - Columns to drop: ['Churn']
+[ 2024-11-29 10:22:47,282 ] 91 root - INFO - Input features shape after dropping columns: (7043, 19)
+[ 2024-11-29 10:22:47,282 ] 93 root - INFO - Creating directory: artifacts/data-transformation
+[ 2024-11-29 10:22:47,282 ] 96 root - INFO - Applying preprocessing object on input features
+[ 2024-11-29 10:22:47,318 ] 98 root - INFO - Transformed feature array shape: (7043, 30)
+[ 2024-11-29 10:22:47,318 ] 100 root - INFO - Saving preprocessing object
+[ 2024-11-29 10:22:47,319 ] 103 root - INFO - Saved preprocessing object at artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:22:47,319 ] 38 root - ERROR - >>>>> Error occurred in the Machine Learning Pipeline <<<<<

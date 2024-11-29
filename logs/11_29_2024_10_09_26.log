@@ -1,0 +1,10 @@
+[ 2024-11-29 10:09:28,360 ] 11 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:09:28,361 ] 16 root - INFO - Data Ingestion configuration initialized
+[ 2024-11-29 10:09:28,361 ] 20 root - INFO - Starting data ingestion
+[ 2024-11-29 10:09:28,433 ] 24 root - INFO - Dataset read as DataFrame with shape: (7043, 21)
+[ 2024-11-29 10:09:28,433 ] 28 root - INFO - Created directory: artifacts/data-ingestion
+[ 2024-11-29 10:09:28,470 ] 32 root - INFO - Data saved to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:09:28,471 ] 16 root - INFO - Starting Data Transformation
+[ 2024-11-29 10:09:28,534 ] 63 root - INFO - Read data completed
+[ 2024-11-29 10:09:28,542 ] 95 root - ERROR - Error occurred in data transformation
+[ 2024-11-29 10:09:28,542 ] 28 root - ERROR - Error in main execution
