@@ -1,0 +1,114 @@
+[ 2024-11-29 10:30:55,663 ] 11 root - INFO - Initializing Training Pipeline
+[ 2024-11-29 10:30:55,663 ] 15 root - INFO - 
+
+====================Training Pipeline Started====================
+
+[ 2024-11-29 10:30:55,663 ] 18 root - INFO - Starting Data Ingestion
+[ 2024-11-29 10:30:55,663 ] 16 root - INFO - Data Ingestion config initialized with path: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:30:55,663 ] 19 root - INFO - Started data ingestion process
+[ 2024-11-29 10:30:55,663 ] 22 root - INFO - Attempting to read dataset from data-source directory
+[ 2024-11-29 10:30:55,689 ] 24 root - INFO - Dataset read successfully with shape: (7043, 21)
+[ 2024-11-29 10:30:55,690 ] 25 root - INFO - Dataset columns: ['customerID', 'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:30:55,690 ] 28 root - INFO - Creating directory at: artifacts/data-ingestion
+[ 2024-11-29 10:30:55,690 ] 30 root - INFO - Directory created successfully
+[ 2024-11-29 10:30:55,690 ] 33 root - INFO - Starting data cleaning process
+[ 2024-11-29 10:30:55,693 ] 34 root - INFO - Missing values before cleaning: 0
+[ 2024-11-29 10:30:55,694 ] 37 root - INFO - Converting TotalCharges column to numeric
+[ 2024-11-29 10:30:55,699 ] 40 root - INFO - Missing values in TotalCharges after conversion: 11
+[ 2024-11-29 10:30:55,699 ] 43 root - INFO - Removing customerID column
+[ 2024-11-29 10:30:55,704 ] 45 root - INFO - Remaining columns after dropping customerID: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:30:55,704 ] 48 root - INFO - Dataset statistics after cleaning:
+[ 2024-11-29 10:30:55,704 ] 49 root - INFO - Number of rows: 7043
+[ 2024-11-29 10:30:55,704 ] 50 root - INFO - Number of columns: 20
+[ 2024-11-29 10:30:55,707 ] 51 root - INFO - Missing values after cleaning: 11
+[ 2024-11-29 10:30:55,710 ] 52 root - INFO - Number of customers churned: 1869
+[ 2024-11-29 10:30:55,711 ] 53 root - INFO - Churn rate: 26.54%
+[ 2024-11-29 10:30:55,711 ] 56 root - INFO - Saving processed data to artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:30:55,740 ] 58 root - INFO - Data saved successfully
+[ 2024-11-29 10:30:55,740 ] 21 root - INFO - Data Ingestion completed. Data saved at: artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:30:55,740 ] 24 root - INFO - 
+Starting Data Transformation
+[ 2024-11-29 10:30:55,740 ] 21 root - INFO - Data Transformation config initialized with preprocessor path: artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:30:55,740 ] 72 root - INFO - Reading data from artifacts/data-ingestion/raw.csv
+[ 2024-11-29 10:30:55,755 ] 74 root - INFO - Dataset shape: (7043, 20)
+[ 2024-11-29 10:30:55,755 ] 75 root - INFO - Dataset columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', 'MonthlyCharges', 'TotalCharges', 'Churn']
+[ 2024-11-29 10:30:55,755 ] 77 root - INFO - Getting preprocessor object
+[ 2024-11-29 10:30:55,755 ] 25 root - INFO - Initializing data transformation pipelines
+[ 2024-11-29 10:30:55,755 ] 36 root - INFO - Numerical columns: ['tenure', 'MonthlyCharges', 'TotalCharges']
+[ 2024-11-29 10:30:55,755 ] 37 root - INFO - Categorical columns: ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod']
+[ 2024-11-29 10:30:55,755 ] 39 root - INFO - Creating numerical pipeline with imputer and scaler
+[ 2024-11-29 10:30:55,756 ] 47 root - INFO - Creating categorical pipeline with imputer and one-hot encoder
+[ 2024-11-29 10:30:55,756 ] 55 root - INFO - Creating column transformer with numerical and categorical pipelines
+[ 2024-11-29 10:30:55,756 ] 63 root - INFO - Preprocessor object created successfully
+[ 2024-11-29 10:30:55,756 ] 80 root - INFO - Creating target variable
+[ 2024-11-29 10:30:55,759 ] 83 root - INFO - Target variable distribution:
+Churn
+0    5174
+1    1869
+Name: count, dtype: int64
+[ 2024-11-29 10:30:55,759 ] 88 root - INFO - Columns to drop: ['Churn']
+[ 2024-11-29 10:30:55,760 ] 91 root - INFO - Input features shape after dropping columns: (7043, 19)
+[ 2024-11-29 10:30:55,761 ] 93 root - INFO - Creating directory: artifacts/data-transformation
+[ 2024-11-29 10:30:55,761 ] 96 root - INFO - Applying preprocessing object on input features
+[ 2024-11-29 10:30:55,797 ] 98 root - INFO - Transformed feature array shape: (7043, 30)
+[ 2024-11-29 10:30:55,797 ] 100 root - INFO - Saving preprocessing object
+[ 2024-11-29 10:30:55,798 ] 103 root - INFO - Saved preprocessing object at artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:30:55,798 ] 27 root - INFO - Data Transformation completed
+[ 2024-11-29 10:30:55,799 ] 28 root - INFO - Features shape: (7043, 30)
+[ 2024-11-29 10:30:55,799 ] 29 root - INFO - Target shape: (7043,)
+[ 2024-11-29 10:30:55,799 ] 30 root - INFO - Preprocessor saved at: artifacts/data-transformation/preprocessor.pkl
+[ 2024-11-29 10:30:55,799 ] 33 root - INFO - 
+Starting Model Training
+[ 2024-11-29 10:30:55,799 ] 26 root - INFO - MLflow tracking URI set successfully
+[ 2024-11-29 10:30:55,844 ] 28 root - INFO - MLflow experiment initialized
+[ 2024-11-29 10:30:55,844 ] 87 root - INFO - Starting model training process
+[ 2024-11-29 10:30:55,844 ] 88 root - INFO - Features shape: (7043, 30)
+[ 2024-11-29 10:30:55,844 ] 89 root - INFO - Target shape: (7043,)
+[ 2024-11-29 10:30:55,845 ] 34 root - INFO - Getting model parameters
+[ 2024-11-29 10:30:55,845 ] 65 root - INFO - Model parameters configured successfully
+[ 2024-11-29 10:30:55,845 ] 97 root - INFO - Starting model training and evaluation
+[ 2024-11-29 10:30:55,845 ] 99 root - INFO - 
+Training decision_tree model
+[ 2024-11-29 10:30:55,962 ] 101 root - INFO - MLflow run started for decision_tree
+[ 2024-11-29 10:30:55,962 ] 112 root - INFO - Starting GridSearchCV for decision_tree
+[ 2024-11-29 10:30:59,405 ] 114 root - INFO - Best parameters for decision_tree: {'criterion': 'entropy', 'max_depth': 3, 'min_samples_leaf': 1, 'min_samples_split': 2}
+[ 2024-11-29 10:30:59,406 ] 69 root - INFO - Evaluating model performance
+[ 2024-11-29 10:30:59,414 ] 78 root - INFO - Confusion Matrix:
+[[4208  966]
+ [ 707 1162]]
+[ 2024-11-29 10:30:59,414 ] 79 root - INFO - Model evaluation metrics: {'accuracy': 0.7624591793269914, 'precision': 0.5460526315789473, 'recall': 0.6217228464419475, 'f1_score': 0.5814360770577933}
+[ 2024-11-29 10:31:02,144 ] 122 root - INFO - MLflow logging completed for decision_tree
+[ 2024-11-29 10:31:02,144 ] 129 root - INFO - New best model found: decision_tree with f1_score: 0.5814360770577933
+[ 2024-11-29 10:31:02,162 ] 99 root - INFO - 
+Training random_forest model
+[ 2024-11-29 10:31:02,186 ] 101 root - INFO - MLflow run started for random_forest
+[ 2024-11-29 10:31:02,187 ] 112 root - INFO - Starting GridSearchCV for random_forest
+[ 2024-11-29 10:32:16,227 ] 114 root - INFO - Best parameters for random_forest: {'max_depth': 10, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
+[ 2024-11-29 10:32:16,275 ] 69 root - INFO - Evaluating model performance
+[ 2024-11-29 10:32:16,283 ] 78 root - INFO - Confusion Matrix:
+[[4875  299]
+ [ 699 1170]]
+[ 2024-11-29 10:32:16,283 ] 79 root - INFO - Model evaluation metrics: {'accuracy': 0.8582990203038477, 'precision': 0.7964601769911505, 'recall': 0.6260032102728732, 'f1_score': 0.701018573996405}
+[ 2024-11-29 10:32:18,121 ] 122 root - INFO - MLflow logging completed for random_forest
+[ 2024-11-29 10:32:18,121 ] 129 root - INFO - New best model found: random_forest with f1_score: 0.701018573996405
+[ 2024-11-29 10:32:18,133 ] 99 root - INFO - 
+Training logistic_regression model
+[ 2024-11-29 10:32:18,162 ] 101 root - INFO - MLflow run started for logistic_regression
+[ 2024-11-29 10:32:18,162 ] 112 root - INFO - Starting GridSearchCV for logistic_regression
+[ 2024-11-29 10:32:18,577 ] 114 root - INFO - Best parameters for logistic_regression: {'C': 1.0, 'max_iter': 1000, 'penalty': 'l2', 'solver': 'liblinear'}
+[ 2024-11-29 10:32:18,579 ] 69 root - INFO - Evaluating model performance
+[ 2024-11-29 10:32:18,592 ] 78 root - INFO - Confusion Matrix:
+[[4648  526]
+ [ 834 1035]]
+[ 2024-11-29 10:32:18,593 ] 79 root - INFO - Model evaluation metrics: {'accuracy': 0.8069004685503337, 'precision': 0.6630365150544523, 'recall': 0.5537720706260032, 'f1_score': 0.6034985422740525}
+[ 2024-11-29 10:32:19,945 ] 122 root - INFO - MLflow logging completed for logistic_regression
+[ 2024-11-29 10:32:19,952 ] 131 root - INFO - 
+Model Training Summary:
+[ 2024-11-29 10:32:19,952 ] 132 root - INFO - Best performing model: random_forest
+[ 2024-11-29 10:32:19,952 ] 133 root - INFO - Best parameters: {'max_depth': 10, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
+[ 2024-11-29 10:32:19,952 ] 134 root - INFO - Best f1 score: 0.701018573996405
+[ 2024-11-29 10:32:19,962 ] 139 root - INFO - Best model saved at: artifacts/model-trainer/model.pkl
+[ 2024-11-29 10:32:19,963 ] 36 root - INFO - Model training completed with score: 0.7010
+[ 2024-11-29 10:32:19,963 ] 38 root - INFO - 
+====================Training Pipeline Completed====================
+

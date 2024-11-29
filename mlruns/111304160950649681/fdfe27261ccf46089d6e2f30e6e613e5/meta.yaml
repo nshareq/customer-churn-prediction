@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/111304160950649681/fdfe27261ccf46089d6e2f30e6e613e5/artifacts
+end_time: 1732872739945
+entry_point_name: ''
+experiment_id: '111304160950649681'
+lifecycle_stage: active
+run_id: fdfe27261ccf46089d6e2f30e6e613e5
+run_name: logistic_regression
+run_uuid: fdfe27261ccf46089d6e2f30e6e613e5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732872738136
+status: 3
+tags: []
+user_id: naim

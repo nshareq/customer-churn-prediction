@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/111304160950649681/f6fff3bc1d34432eb57ed10f011d4d62/artifacts
+end_time: 1732872662144
+entry_point_name: ''
+experiment_id: '111304160950649681'
+lifecycle_stage: active
+run_id: f6fff3bc1d34432eb57ed10f011d4d62
+run_name: decision_tree
+run_uuid: f6fff3bc1d34432eb57ed10f011d4d62
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1732872655943
+status: 3
+tags: []
+user_id: naim

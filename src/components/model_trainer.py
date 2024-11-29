@@ -142,4 +142,4 @@ class ModelTrainer:
 
         except Exception as e:
             logging.error(f"Error in model training: {str(e)}")
-            raise CustomException(e, sys)
+            raise CustomException(e, sys)   
