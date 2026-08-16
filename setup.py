@@ -7,7 +7,6 @@ setup(
     long_description=open("README.md").read(),  
     long_description_content_type="text/markdown",
     author="Naim Shareq",
-    author_email="naimshareq@gmail.com",
     url="https://github.com/nshareq/customer-churn-prediction",
     packages=find_packages(exclude=("tests", "docs")),
     install_requires=[
